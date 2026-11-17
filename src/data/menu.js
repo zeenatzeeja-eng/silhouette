@@ -46,12 +46,12 @@ export const menu = [
 		label: "LUXURY PRET",
 		slug: "formal",
 		children: [
-			{ label: "MAAHI LUXURY PRET", slug: "maahi-luxury-pret" },
-			{ label: "SILK SOLID'S 26 ", slug: "silk-solids-26" },
-			{ label: "MAAHI LUXURY PRET '25 ", slug: "maahi-luxury-pret-25" },
-			{ label: "LUXE", slug: "luxe" },
-			{ label: "OPAL", slug: "opal" },
-			{ label: "RIWAJ LUXURY PRET", slug: "riwaj-luxury-pret" },
+			{ label: "MAAHI LUXURY PRET", slug: "meeras" },
+			{ label: "SILK SOLID'S 26 ", slug: "zarqa" },
+			{ label: "MAAHI LUXURY PRET '25 ", slug: "tosha-kinari" },
+			{ label: "LUXE", slug: "noor-jahan-bridal-23" },
+			{ label: "OPAL", slug: "noor-jahan-bridal-23" },
+			{ label: "RIWAJ LUXURY PRET", slug: "silk-solids-26" },
 		],
 	},
 
@@ -76,7 +76,7 @@ export const menu = [
 	{
 		label: "ACCESSORIES",
 		slug: "shop-by-events",
-		children: [{ label: "CLUTCHES & POUTCHES", slug: "engagement" }],
+		children: [{ label: "CLUTCHES & POUTCHES", slug: "clutches-pouches" }],
 	},
 ];
 
@@ -85,7 +85,7 @@ export const topLinks = [
 	{ label: "Sale", slug: "sale", highlight: true },
 	{ label: "Maahi II Luxury Eid Pret", slug: "maahi-ii-luxury-eid-pret" },
 	{ label: "Best Sellers", slug: "best-sellers" },
-	{ label: "SPOOTED" },
+	{ label: "SPOOTED", slug: "spooted" },
 ];
 
 export const footerLinks = [
