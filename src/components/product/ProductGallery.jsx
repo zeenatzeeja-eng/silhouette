@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { useState } from "react";
-
+import { cloudinaryUrl, isCloudinary } from "@/lib/cloudinaryUrl";
 export default function ProductGallery({ images, name }) {
 	const [active, setActive] = useState(0);
+
+	const mainSrc = images[active];
 
 	return (
 		<div className="flex flex-col-reverse gap-3 md:flex-row md:items-start">
@@ -19,9 +21,11 @@ export default function ProductGallery({ images, name }) {
 						}`}
 					>
 						<Image
-							src={src}
+							src={cloudinaryUrl(src, { width: 160 })}
 							alt={`${name} ${i + 1}`}
 							fill
+							unoptimized={isCloudinary(src)}
+							loading="lazy"
 							sizes="64px"
 							className="object-cover"
 						/>
@@ -31,10 +35,11 @@ export default function ProductGallery({ images, name }) {
 
 			<div className="relative aspect-[3/4] flex-1 overflow-hidden bg-soft">
 				<Image
-					src={images[active]}
+					src={cloudinaryUrl(mainSrc, { width: 1000 })}
 					alt={name}
 					fill
 					priority
+					unoptimized={isCloudinary(mainSrc)}
 					sizes="(min-width: 768px) 50vw, 100vw"
 					className="object-cover"
 				/>

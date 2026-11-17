@@ -1,24 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-function SlideContent({ s }) {
-	return (
-		<div className="absolute inset-0 flex flex-col items-end justify-center pr-[10%] text-right text-black"></div>
-	);
-}
-
 export default function HeroSlider({ slides }) {
 	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => setMounted(true), []);
 
+	// Pehli render (server) par sirf pehli image, phir Swiper
 	if (!mounted) {
 		const first = slides[0];
 		return (
@@ -28,7 +22,8 @@ export default function HeroSlider({ slides }) {
 					alt={first.alt}
 					width={1920}
 					height={900}
-					className="w-full h-auto"
+					sizes="100vw"
+					className="h-auto w-full"
 					priority
 				/>
 			</div>
@@ -51,10 +46,10 @@ export default function HeroSlider({ slides }) {
 							alt={s.alt}
 							width={1920}
 							height={900}
-							className="w-full h-auto"
+							sizes="100vw"
+							className="h-auto w-full"
 							priority={i === 0}
 						/>
-						<SlideContent s={s} />
 					</div>
 				</SwiperSlide>
 			))}

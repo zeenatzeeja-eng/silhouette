@@ -6,7 +6,7 @@ import CartSync from "@/components/cart/CartSync";
 import { getCurrentUser } from "@/lib/session";
 import { getNavigation } from "@/services/collectionService";
 import { getSettings } from "@/services/settingService";
-
+import RouteProgress from "@/components/layout/RouteProgress";
 export default async function ShopLayout({ children }) {
 	const user = await getCurrentUser();
 
@@ -19,6 +19,7 @@ export default async function ShopLayout({ children }) {
 
 	return (
 		<>
+			<RouteProgress />
 			<AnnouncementBar />
 			<Header user={headerUser} navigation={navigation} />
 			<main>{children}</main>

@@ -1,14 +1,18 @@
 "use client";
 
 import MobileMenu from "./MobileMenu";
-import SearchOverlay from "./SearchOverlay";
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import { Search, User, ShoppingBag } from "lucide-react";
+import { User, Search, ShoppingBag } from "lucide-react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { useCartStore } from "@/store/cartStore";
 import { useCartDrawer } from "@/store/cartDrawerStore";
+import { menu, topLinks } from "@/data/menu";
+
+// Search sirf tab load ho jab khule
+const SearchOverlay = dynamic(() => import("./SearchOverlay"), { ssr: false });
 
 const navLink =
 	"relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-black after:transition-transform after:duration-300 after:content-[''] hover:after:scale-x-100";
@@ -20,8 +24,12 @@ function NavItem({ item }) {
 
 	if (children.length === 0) {
 		return (
-			<Link href={`/collections/${item.slug}`} className={navLink}>
-				{item.name}
+			<Link
+				href={`/collections/${item.slug}`}
+				prefetch={false}
+				className={navLink}
+			>
+				{item.label}
 			</Link>
 		);
 	}
@@ -34,9 +42,10 @@ function NavItem({ item }) {
 		>
 			<Link
 				href={`/collections/${item.slug}`}
+				prefetch={false}
 				className={`${navLink} flex items-center`}
 			>
-				{item.name}
+				{item.label}
 				<RiArrowDropDownLine size={22} className="-ml-1" />
 			</Link>
 
@@ -44,11 +53,12 @@ function NavItem({ item }) {
 				<div className="absolute left-0 top-full z-30 min-w-[200px] border border-line bg-white py-3 shadow-sm">
 					{children.map((c) => (
 						<Link
-							key={c._id}
+							key={c.slug}
 							href={`/collections/${item.slug}/${c.slug}`}
+							prefetch={false}
 							className="block px-5 py-2 text-[14px] uppercase hover:bg-soft-2"
 						>
-							{c.name}
+							{c.label}
 						</Link>
 					))}
 				</div>
@@ -57,7 +67,7 @@ function NavItem({ item }) {
 	);
 }
 
-export default function Header({ user, navigation = [] }) {
+export default function Header({ user }) {
 	const [mounted, setMounted] = useState(false);
 	const [searchOpen, setSearchOpen] = useState(false);
 
@@ -66,36 +76,35 @@ export default function Header({ user, navigation = [] }) {
 
 	useEffect(() => setMounted(true), []);
 
-	// Sale collection ka item alag, baki parents header mein tarteeb se
-	const saleItem = navigation.find((p) => p.isSale);
-	const parents = navigation.filter((p) => !p.isSale);
-
 	return (
 		<header className="bg-white border-b border-line">
 			<div className="site-container flex items-center justify-between py-4">
-				<Link href="/">
+				<Link href="/" prefetch={false}>
 					<Image
 						src="/logo.avif"
 						alt="Silhouette"
 						width={160}
 						height={48}
 						priority
+						sizes="160px"
 						style={{ width: 160, height: "auto" }}
 					/>
 				</Link>
 
-				<nav className="hidden lg:flex flex-1 flex-wrap items-center justify-center gap-x-5 gap-y-3 px-8 text-[15px] uppercase">
-					{saleItem && (
+				<nav className="hidden lg:flex flex-1 flex-wrap items-center justify-center gap-x-4 gap-y-2 px-6 text-[13px] uppercase">
+					{topLinks.map((l) => (
 						<Link
-							href={`/collections/${saleItem.slug}`}
-							className={`${navLink} blink text-sale`}
+							key={l.slug}
+							href={`/collections/${l.slug}`}
+							prefetch={false}
+							className={`${navLink} ${l.slug === "sale" ? "blink text-sale" : ""}`}
 						>
-							{saleItem.name}
+							{l.label}
 						</Link>
-					)}
+					))}
 
-					{parents.map((item) => (
-						<NavItem key={item._id} item={item} />
+					{menu.map((item) => (
+						<NavItem key={item.slug} item={item} />
 					))}
 				</nav>
 
@@ -104,6 +113,7 @@ export default function Header({ user, navigation = [] }) {
 
 					<Link
 						href={user ? "/account" : "/account/login"}
+						prefetch={false}
 						aria-label="Account"
 						className="flex items-center gap-2"
 					>
@@ -137,7 +147,9 @@ export default function Header({ user, navigation = [] }) {
 				</div>
 			</div>
 
-			<SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+			{searchOpen && (
+				<SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+			)}
 		</header>
 	);
 }

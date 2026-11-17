@@ -4,16 +4,19 @@ export const announcements = [
 	"Free shipping all over world on $500 and above orders",
 ];
 
+// DB ke collection / childCollection ke hisaab se
 export const menu = [
 	{
 		label: "New Arrivals",
 		slug: "new-arrivals",
 		children: [
-			{ label: "Maahi II Luxury Eid Pret", slug: "maahi-ii-luxury-eid-pret" },
-
 			{ label: "Silk Solids '26", slug: "silk-solids-26" },
-			{ label: "Raha Eid Pret '26", slug: "raha-eid-pret", highlight: true },
-			{ label: "Lumiere Luxury Formals '26", slug: "lumiere-luxury-formals26" },
+			{ label: "Raha Eid Pret '26", slug: "raha-eid-pret-26", highlight: true },
+			{
+				label: "Lumiere Luxury Formals '26",
+				slug: "lumiere-luxury-formals-26",
+			},
+			{ label: "Maahi II Luxury Eid Pret", slug: "maahi-ii-luxury-eid-pret" },
 		],
 	},
 	{
@@ -30,34 +33,34 @@ export const menu = [
 		label: "Formal",
 		slug: "formal",
 		children: [
-			{ label: "Lumiere Luxury Formals '26", slug: "lumiere-luxury-formals26" },
 			{ label: "Meeras", slug: "meeras" },
 			{ label: "Zarqa", slug: "zarqa" },
-			{ label: "Rivaj", slug: "rivaj" },
+			{ label: "Riwaj Formals", slug: "riwaj-formals" },
 			{ label: "Rang-e-Bahar", slug: "rang-e-bahar" },
 			{ label: "Tosha Kinari", slug: "tosha-kinari" },
-			{ label: "Shawl Collection", slug: "shawl-collection" },
+			{ label: "SHAWL COLLECTION", slug: "shawl-collection" },
 		],
 	},
+
 	{
-		label: "Luxury Pret",
-		slug: "luxury-pret",
+		label: "LUXURY PRET",
+		slug: "formal",
 		children: [
-			{ label: "Maahi II Luxury Eid Pret", slug: "maahi-eid-pret" },
-			{ label: "Silk Solids '26", slug: "silk-solids" },
-			{ label: "Maahi Luxury Pret '25", slug: "maahi-luxury-pret-25" },
-			{ label: "Luxe", slug: "luxe" },
-			{ label: "opal", slug: "opal" },
-			{ label: "Riwaj Luxury Pret", slug: "riwaj-luxury-pret" },
+			{ label: "MAAHI LUXURY PRET", slug: "maahi-luxury-pret" },
+			{ label: "SILK SOLID'S 26 ", slug: "silk-solids-26" },
+			{ label: "MAAHI LUXURY PRET '25 ", slug: "maahi-luxury-pret-25" },
+			{ label: "LUXE", slug: "luxe" },
+			{ label: "OPAL", slug: "opal" },
+			{ label: "RIWAJ LUXURY PRET", slug: "riwaj-luxury-pret" },
 		],
 	},
+
 	{
-		label: "PRET",
-		slug: "pret",
-		children: [
-			{ label: "Raha Eid Pret 26", slug: "raha-eid-pret-26", highlight: true },
-		],
+		label: " PRET",
+		slug: "formal",
+		children: [{ label: "RAHA EID PRET '26 ", slug: "raha-eid-pret-26" }],
 	},
+
 	{
 		label: "Shop by Events",
 		slug: "shop-by-events",
@@ -69,19 +72,20 @@ export const menu = [
 			{ label: "Walima", slug: "walima" },
 		],
 	},
+
 	{
-		label: "Accessories",
-		slug: "accessories",
-		children: [{ label: "Pouches & Clutches", slug: "pouches-clutches" }],
+		label: "ACCESSORIES",
+		slug: "shop-by-events",
+		children: [{ label: "CLUTCHES & POUTCHES", slug: "engagement" }],
 	},
 ];
 
 // Dropdown nahi, direct links
 export const topLinks = [
-	{ label: "Sale", slug: "sale-1", highlight: true },
+	{ label: "Sale", slug: "sale", highlight: true },
 	{ label: "Maahi II Luxury Eid Pret", slug: "maahi-ii-luxury-eid-pret" },
 	{ label: "Best Sellers", slug: "best-sellers" },
-	{ label: "Spotted", slug: "spotted", href: "/pages/spot" },
+	{ label: "SPOOTED" },
 ];
 
 export const footerLinks = [
@@ -94,7 +98,6 @@ export const footerLinks = [
 	{ label: "Terms and Conditions", slug: "terms-and-conditions" },
 	{ label: "Brand Story", slug: "brand-story" },
 	{ label: "Shipping Policy", slug: "shipping-policy" },
-	/* { label: "Blog", slug: "blog", href: "/blogs" }, */
 	{ label: "Contact Us", slug: "contact" },
 	{ label: "FAQs", slug: "faqs" },
 ];
