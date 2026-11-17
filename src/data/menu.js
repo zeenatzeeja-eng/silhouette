@@ -44,7 +44,7 @@ export const menu = [
 
 	{
 		label: "LUXURY PRET",
-		slug: "formal",
+		slug: "luxury-pret",
 		children: [
 			{ label: "MAAHI LUXURY PRET", slug: "meeras" },
 			{ label: "SILK SOLID'S 26 ", slug: "zarqa" },
@@ -57,7 +57,7 @@ export const menu = [
 
 	{
 		label: " PRET",
-		slug: "formal",
+		slug: "pret",
 		children: [{ label: "RAHA EID PRET '26 ", slug: "raha-eid-pret-26" }],
 	},
 
@@ -75,7 +75,7 @@ export const menu = [
 
 	{
 		label: "ACCESSORIES",
-		slug: "shop-by-events",
+		slug: "accessories",
 		children: [{ label: "CLUTCHES & POUTCHES", slug: "clutches-pouches" }],
 	},
 ];
